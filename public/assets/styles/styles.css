@@ -1,0 +1,46 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    background-color: #DEDEDE;
+}
+
+.page-title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    font-size: 50px;
+    margin: 35px 0;
+}
+
+.scroll-btn-container {
+    text-align: right;
+}
+
+.scroll-btn {
+    margin-top: 30px;
+}
+
+.card-box-shadow {
+    box-shadow: 5px 5px 10px #BBBABA;
+}
+
+.card-container{
+    margin: 20px 0;
+}
+
+.form-container {
+    margin: 20px 0;
+}
+
+.btn-img {
+    height: 25px;
+}
+
+.sticky {
+    position: sticky !important;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+}

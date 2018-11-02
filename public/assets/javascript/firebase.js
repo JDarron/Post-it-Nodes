@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     const config = {
         apiKey: "AIzaSyDhIxAIkTaBo8mgh3IgbBhOLbovjngDxWA",
         authDomain: "postit-7a679.firebaseapp.com",
@@ -7,9 +8,10 @@ $(document).ready(function () {
         storageBucket: "postit-7a679.appspot.com",
         messagingSenderId: "601254925500"
     };
+
     firebase.initializeApp(config);
 
-    const db = firebase.database();
+    const db = firebase.database().ref();
 
     function FormData(title, reminder, author) {
         this.title = title;
@@ -17,11 +19,8 @@ $(document).ready(function () {
         this.author = author;
     };
 
-    const sendFormDataToFirebase = (formData) => {
-        return $.post("/api/note", formData)
-            .then(res => {
-                console.log(res);
-            });
+    const sendFormDataToFirebase = formData => {
+        return $.post("/api/note", formData);
     };
 
     const handleSubmit = (event) => {
@@ -35,24 +34,41 @@ $(document).ready(function () {
         return sendFormDataToFirebase(formData);
     };
 
-    const displayDataFromFirebase = (firebaseData) => {
-        const dataToDisplay = Object.values(firebaseData);
-        const notesTarget = document.getElementById("note-target");
-        const source = document.getElementById("note-container").innerHTML;
-        const template = Handlebars.compile(source);
-        notesTarget.innerHTML = template({
-            note: dataToDisplay
+    const handleDelete = child => {
+        return $.ajax({
+            url: `/api/note/${child}`,
+            type: "delete"
         });
+    };
+
+    const handleDeleteEventListener = () => {
+        $(".delete-btn").on("click", function () {
+            const childKey = $(this).val();
+            return handleDelete(childKey);
+        });
+    };
+
+    const displayDataFromFirebase = snap => {
+        const notesTarget = $("#note-target");
+        const source = $("#note-container").html();
+        const template = Handlebars.compile(source);
+        if (snap) {
+            notesTarget.html(template({
+                note: snap
+            }));
+            handleDeleteEventListener();
+        } else {
+            return notesTarget.html("");
+        }
     };
 
     // SUBMIT BUTTON EVENT HANDLER
     $(".submit").on("click", handleSubmit);
 
     // DATABASE ON CHANGE HANDLER
-    db.ref().on("value", function (snapshot) {
-        const snapshotValue = snapshot.val();
-        if (snapshotValue) displayDataFromFirebase(snapshotValue);
-        else return;
+    db.on("value", snap => {
+        const snapshotValue = snap.val();
+        return displayDataFromFirebase(snapshotValue);
     }, () => console.log("The read failed: " + errorObject.code));
 
 });

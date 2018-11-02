@@ -1,16 +1,18 @@
-const db = require('firebase-admin');
+const firebase = require('firebase-admin');
 const serviceAccount = require("../../config/serviceAccountKey.json");
 
-db.initializeApp({
-    credential: db.credential.cert(serviceAccount),
+firebase.initializeApp({
+    credential: firebase.credential.cert(serviceAccount),
     databaseURL: "https://postit-7a679.firebaseio.com/"
 });
 
+const db = firebase.database().ref();
+
 exports.createNote = (req, res) => {
 
-    db.database().ref().push(
+    db.push(
         req.body,
-        function (err) {
+        err => {
             if (err) console.error(err);
             else {
                 res.json({
@@ -22,5 +24,16 @@ exports.createNote = (req, res) => {
 
 };
 
+exports.deleteNote = (req, res) => {
+    db.child(req.params.id).remove(err => {
+        if (err) console.error(err);
+        else {
+            res.json({
+                message: "Success!",
+                result: true
+            });
+        }
+    });
+};
 
 

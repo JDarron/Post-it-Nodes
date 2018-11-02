@@ -36,6 +36,9 @@
 							{{this.author}}
 						</footer>
 					</blockquote>
+					<button type="button" data-toggle="tooltip" data-placement="right" title="Delete" value="{{@key}}" class="btn btn-danger delete-btn card-box-shadow">
+						<img class="btn-img" src="./assets/images/trash.ico" alt="cloud">
+					</button>
 				</div>
 			</div>
 			{{/each}}
@@ -44,7 +47,7 @@
 		<!-- SCROLL BUTTON -->
 		<div id="scroll-btn" class="scroll-btn-container">
 			<a href="#form-container" class="form-scroll-button">
-				<button type="button" class="btn btn-success scroll-btn card-box-shadow">
+				<button type="button" data-toggle="tooltip" data-placement="top" title="Add reminder" class="btn btn-success scroll-btn card-box-shadow">
 					<img class="btn-img" src="./assets/images/add.ico" alt="cloud">
 				</button>
 			</a>
@@ -55,10 +58,10 @@
 		</div>
 
 		<div class="card card-box-shadow form-container">
-			<p class="card-header">
-				Create A New Reminder
-			</p>
 			<div class="card-body">
+				<h2 class="form-title">
+					Create A New Reminder
+				</h2>
 				<form id="form-container">
 					<div class="form-group">
 						<label for="title-input">
@@ -78,7 +81,7 @@
 						</label>
 						<input type="input" class="form-control" id="author-input" placeholder="Who do you think you are?">
 					</div>
-					<button type="submit" class="btn btn-success submit">
+					<button type="submit" class="btn btn-success submit" data-toggle="tooltip" data-placement="right" title="Create a reminder">
 						Create
 						<img class="btn-img" src="./assets/images/cloud.ico" alt="cloud">
 					</button>
@@ -86,9 +89,10 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 	<script src="./assets/javascript/handlebars.js"></script>
 	<script src="./assets/javascript/firebase.js"></script>
 	<script src="./assets/javascript/logic.js"></script>

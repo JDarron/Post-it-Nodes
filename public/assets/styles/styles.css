@@ -54,3 +54,33 @@ body {
     top: 0;
     width: 100%;
 }
+
+/*
+    FOOTER
+*/
+
+.ftr-content {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.ftr-content a {
+    color: #000000;
+    font-weight: 200;
+    text-decoration: none;
+}
+
+.ftr-content a:hover {
+    color: #A5A4A4;
+}
+
+.ftr-links {
+    margin: 10px 0;
+}
+
+
+.ftr-img {
+    margin: 0 5px;
+}
+
+

@@ -49,17 +49,15 @@ $(document).ready(function () {
     };
 
     const displayDataFromFirebase = snap => {
-        const notesTarget = $("#note-target");
-        const source = $("#note-container").html();
-        const template = Handlebars.compile(source);
         if (snap) {
+            const notesTarget = $("#note-target");
+            const source = $("#note-container").html();
+            const template = Handlebars.compile(source);
             notesTarget.html(template({
                 note: snap
             }));
             handleDeleteEventListener();
-        } else {
-            return notesTarget.html("");
-        }
+        } else return notesTarget.html("");
     };
 
     // SUBMIT BUTTON EVENT HANDLER
@@ -69,6 +67,6 @@ $(document).ready(function () {
     db.on("value", snap => {
         const snapshotValue = snap.val();
         return displayDataFromFirebase(snapshotValue);
-    }, () => console.log("The read failed: " + errorObject.code));
+    }, () => console.error("The read failed: " + errorObject.code));
 
 });

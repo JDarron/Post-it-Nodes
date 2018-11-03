@@ -21,7 +21,6 @@ exports.createNote = (req, res) => {
                 });
             }
         }); // END FIREBASE PUSH METHOD
-
 };
 
 exports.deleteNote = (req, res) => {

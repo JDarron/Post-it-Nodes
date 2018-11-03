@@ -1,3 +1,7 @@
+/* 
+    DEFAULT STYLE
+*/
+
 * {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -6,6 +10,10 @@
 body {
     background-color: #DEDEDE;
 }
+
+/* 
+    CONTENT
+*/
 
 .page-title {
     font-family: 'Open Sans Condensed', sans-serif;
@@ -22,15 +30,16 @@ body {
     margin-top: 30px;
 }
 
-.form-title {
-    font-weight: 300;
-    margin-bottom: 25px;
-    text-align: center;
+.sticky {
+    position: sticky !important;
+    z-index: 1;
+    top: 0;
+    width: 100%;
 }
 
-.submit {
-    margin: 10px 0;
-}
+/* 
+    REMINDER PANEL
+*/
 
 .delete-btn {
     margin-top: 10px;
@@ -44,19 +53,34 @@ body {
     margin: 20px 0;
 }
 
+/* 
+    FORM PANEL
+*/
+
 .form-container {
     margin: 20px 0;
+}
+
+.form-title {
+    font-weight: 300;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.submit {
+    margin: 10px 0;
 }
 
 .btn-img {
     height: 25px;
 }
 
-.sticky {
-    position: sticky !important;
-    z-index: 1;
-    top: 0;
-    width: 100%;
+.up-scroll-container {
+    text-align: center;
+}
+
+.up-scroll {
+    height: 25px;
 }
 
 /*
